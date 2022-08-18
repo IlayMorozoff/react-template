@@ -10,8 +10,11 @@ const stylesHandler = isProduction ? MiniCssExtractPlugin.loader : 'style-loader
 
 const config = {
     entry: './src/index.tsx',
+    devtool: isProduction ? 'hidden-source-map' : 'inline-source-map',
     output: {
         path: path.resolve(__dirname, 'dist'),
+        filename: '[name].[hash].js',
+        clean: true,
     },
     devServer: {
         open: true,
