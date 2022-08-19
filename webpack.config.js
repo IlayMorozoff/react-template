@@ -15,10 +15,20 @@ const config = {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].[hash].js',
         clean: true,
+        publicPath: '/'
     },
     devServer: {
+        static: {
+            directory: path.resolve(__dirname, 'dist'),
+        },
         open: true,
-        host: 'localhost',
+        port: 3222,
+        historyApiFallback: true,
+        compress: true,
+        client: {
+            overlay: true,
+            progress: true,
+        }
     },
     plugins: [
         new HtmlWebpackPlugin({
